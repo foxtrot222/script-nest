@@ -5,13 +5,13 @@
 
 A place for all my scripts. The descriptions of the scripts is as follows:
 
-** 'backuper.sh'
+** ~backuper.sh~
 
 - This script is for my local backups on my phone drive and USB drive.
 - Directories are synced to my phone using syncthing. Its API is used to check if the sync is completed or not.
 - A tar.xz compressed archive is created for my directories and saved on a USB drive.
 
-** `cleaner.sh`
+** ~cleaner.sh~
 
 - These clean stuff. Echo statements will reveal what all the commands in the script do. ¯\(°_o)/¯
 
