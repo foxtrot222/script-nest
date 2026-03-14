@@ -6,6 +6,7 @@
 
 sudo -v
 
+# This function gets the list of applications that are installed and removes the config folders of the applications that are not listed as installed.
 flatpak_config_remove() {
     echo "Removing useless Flatpak config directories..."
     list=( $(flatpak list --app --columns=application) )

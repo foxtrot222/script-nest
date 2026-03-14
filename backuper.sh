@@ -14,12 +14,15 @@ run_syncthing() {
     echo "Starting Syncthing in background..."
     apikey=$(xmllint --xpath 'string(//apikey)' "$HOME/.local/state/syncthing/config.xml")
 
+    # This function checks that if syncthing is connected to any of the devices (currently i have only one device)
     s_connection() {
         curl -s -H "X-API-Key: $apikey" http://127.0.0.1:8384/rest/system/connections | jq '.connections.[].connected'
     }
+    # This function checks the sync completion latest data for each folder and returns the number of folders who are completed
     s_completion() {
 	curl -s -H "X-API-Key: $apikey" http://127.0.0.1:8384/rest/events | jq 'map(select(.type == "FolderCompletion")) | sort_by(.time) | reverse | unique_by(.data.folder) | map(select(.data.completion == 100)) | length'
     }
+    
     s_shutdown() {
         curl -X POST -H "X-API-Key: $apikey" http://127.0.0.1:8384/rest/system/shutdown
     }
