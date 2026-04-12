@@ -1,12 +1,7 @@
 #!/bin/bash
 
-# SPDX-FileCopyrightText: 2026 Tirth Kavathiya <tirthkavathiya@gmail.com>
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
-
 sudo -v
 
-# This function gets the list of applications that are installed and removes the config folders of the applications that are not listed as installed.
 flatpak_config_remove() {
     echo "Removing useless Flatpak config directories..."
     list=( $(flatpak list --app --columns=application) )
